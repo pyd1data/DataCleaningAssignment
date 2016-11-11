@@ -1,6 +1,6 @@
 # DataCleaningAssignment Code Book
 ##This code book gives information about the new tidy data set 
-##The 68 features are first
+##The 68 features are first:
 
 * "subject": subject ids, ranged from one to 30
 * "activity": "WALKING" ,"WALKING_UPSTAIRS", "WALKING_DOWNSTAIRS", "SITTING", "STANDING", "LAYING"
