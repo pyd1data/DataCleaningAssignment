@@ -35,20 +35,20 @@ data_interet_std<-string_data[SGstd]
 #rename with real feature names
 colnames(features_all) <- string_data 
 #select
-features_select_mean<-features_all[data_interet_mean]
-features_select_std<-features_all[data_interet_std]
+features_select<-features_all[c(data_interet_mean,data_interet_std)]
+#features_select_std<-features_all[data_interet_std]
 #rename with real activity name
 st<-lapply(activity_all,function(x){activity_data[x][[2]]})
 #creation of an extented data frane with activity name and subject information for each row
-features_select_mean[,"activity"]<-st
-features_select_mean[,"subject"]<-subject_all
+features_select[,"activity"]<-st
+features_select[,"subject"]<-subject_all
 #aggregate variables as suggested, by  "subjects" and "activity"
-features_select_mean_tidy <- aggregate(features_select_mean, by=list(features_select_mean$subject,features_select_mean$activity), FUN=mean)
+features_select_tidy <- aggregate(features_select, by=list(features_select$subject,features_select$activity), FUN=mean)
 #rename columns
-features_select_mean_tidy$activity <- NULL
-features_select_mean_tidy$subject <- NULL
-names(features_select_mean_tidy)[names(features_select_mean_tidy) == 'Group.1'] <- 'subject'
-names(features_select_mean_tidy)[names(features_select_mean_tidy) == 'Group.2'] <- 'activity'
+features_select_tidy$activity <- NULL
+features_select_tidy$subject <- NULL
+names(features_select_tidy)[names(features_select_tidy) == 'Group.1'] <- 'subject'
+names(features_select_tidy)[names(features_select_tidy) == 'Group.2'] <- 'activity'
 #write results
-write.table(features_select_mean_tidy,'TidyData.txt',row.names = FALSE)
+write.table(features_select_tidy,'TidyData.txt',row.names = FALSE)
 
