@@ -7,6 +7,7 @@ if (loading==TRUE){
 url <- 'http://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip'
 download.file(url, 'Data.zip')
 unzip('Data.zip')}
+#Reading the Samsung Data set
 #TEST data reading
 X_test <- fread("UCI HAR Dataset/test/X_test.txt") #X test
 y_test <- fread("UCI HAR Dataset/test/y_test.txt") #X test
@@ -34,15 +35,16 @@ data_interet_mean<-string_data[SGmean]
 data_interet_std<-string_data[SGstd]
 #rename with real feature names
 colnames(features_all) <- string_data 
-#select
+#select only mean() and std() features
 features_select<-features_all[c(data_interet_mean,data_interet_std)]
-#features_select_std<-features_all[data_interet_std]
 #rename with real activity name
 st<-lapply(activity_all,function(x){activity_data[x][[2]]})
+#merging features with activity labels and subject ids.
 #creation of an extented data frane with activity name and subject information for each row
 features_select[,"activity"]<-st
 features_select[,"subject"]<-subject_all
-#aggregate variables as suggested, by  "subjects" and "activity"
+#production of a new tidy data set, more compact with average features ordered  by subjects ids and activity.
+#First aggregate variables as suggested, by  "subjects" and "activity"
 features_select_tidy <- aggregate(features_select, by=list(features_select$subject,features_select$activity), FUN=mean)
 #rename columns
 features_select_tidy$activity <- NULL
