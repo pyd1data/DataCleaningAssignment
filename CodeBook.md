@@ -6,7 +6,7 @@
 * "activity": "WALKING" ,"WALKING_UPSTAIRS", "WALKING_DOWNSTAIRS", "SITTING", "STANDING", "LAYING"
 
 ##Then the 66 features computed from the Samsung data set, by averaging by subject and activity: 
-##33 from the mean() features 
+###33 from the mean() features 
 
 tBodyAcc-mean()-XYZ  (one feature for X, one for Y and one for Z)
 tGravityAcc-mean()-XYZ
@@ -26,7 +26,7 @@ fBodyAccJerkMag-mean()
 fBodyGyroMag-mean()
 fBodyGyroJerkMag-mean()
 
-##and 33 from the std() features
+###and 33 from the std() features
 
 tBodyAcc-std()-XYZ  (one feature for X, one for Y and one for Z)
 tGravityAcc-std()-XYZ
